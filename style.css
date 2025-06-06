@@ -1,0 +1,420 @@
+@import url("https://fonts.googleapis.com/css?family=Sacramento");
+
+body {
+  background-color: #1e1934;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  position: fixed;
+  margin: 0 auto;
+  bottom: 5%;
+  left: 0;
+  right: 0;
+  width: 12em;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 100;
+  font-family: "Sacramento";
+  letter-spacing: 0.1em;
+  color: white;
+  text-shadow: 0 0 20px black;
+  opacity: 0.8;
+  z-index: 10;
+}
+
+.glow-bg {
+  animation: bg-glow 0.8s alternate infinite;
+}
+
+@keyframes bg-glow {
+  0% { background-color: #1e1934; }
+  100% { background-color: #2a2455; }
+}
+
+#glow {
+  position: absolute;
+  left: calc(50% - .1em);
+  bottom: calc(35% + 9em);
+  width: 0.2em;
+  height: 0.2em;
+  border-radius: 100%;
+  opacity: 0.15;
+}
+
+#candle {
+  position: absolute;
+  left: calc(50% - .75em);
+  bottom: 33.1%;
+  width: 1.5em;
+  height: 10em;
+  overflow: hidden;
+  z-index: 5;
+  display: none;
+}
+
+#candle::before {
+  position: absolute;
+  bottom: 0;
+  left: 8%;
+  content: "";
+  width: 84%;
+  height: 80%;
+  background: linear-gradient(whitesmoke 0, #1e1934 125%);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  border: 1px solid #333;
+}
+
+#top {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 2em;
+  background-color: transparent;
+}
+
+#top #knot {
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - .05em);
+  height: 0.5em;
+  width: 0.1em;
+  background-color: #0f3146;
+}
+
+#top .smoke {
+  position: absolute;
+  opacity: 0;
+  border-radius: 100%;
+}
+
+#top .smoke:nth-child(1) {
+  bottom: 0.1em;
+  left: calc(50% - .5em);
+  height: 0.5em;
+  width: 0.5em;
+  background-color: silver;
+}
+
+#top .smoke:nth-child(2) {
+  bottom: 0.6em;
+  left: 50%;
+  height: 0.6em;
+  width: 0.6em;
+  background-color: lightgray;
+  animation-delay: 0.2s;
+}
+
+#top .smoke:nth-child(3) {
+  bottom: 1.1em;
+  left: 20%;
+  height: 0.3em;
+  width: 0.3em;
+  background-color: whitesmoke;
+  animation-delay: 0.3s;
+}
+
+#top #flame {
+  position: absolute;
+  bottom: 0.15em;
+  width: 1.5em;
+  height: 1.6em;
+  background-color: #ffee86;
+  border-radius: 100%;
+  box-shadow: inset 0 0 0 0.1em #ffee86;
+  transform: rotateY(30deg);
+  cursor: pointer;
+}
+
+#top #flame::after {
+  position: absolute;
+  content: "";
+  width: 0.7em;
+  height: 0.9em;
+  bottom: 10%;
+  left: calc(50% - .35em);
+  background-color: #ff3200;
+  border-radius: 100%;
+  animation: burnInner 1.5s ease-in-out infinite;
+}
+
+#top #flame:hover {
+  transition: all 0.1s ease-in-out;
+  background-color: yellow;
+}
+
+#top #flame:hover::after {
+  background-color: red;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 1.5em 2.2em rgba(255, 246, 162, 0.75); }
+  50% { box-shadow: 0 0 1.5em 2em rgba(255, 246, 162, 0.6); }
+  100% { box-shadow: 0 0 1.5em 2.2em rgba(255, 246, 162, 0.75); }
+}
+
+@keyframes burn {
+  0% { height: 1.7em; transform: rotateY(30deg); }
+  50% { height: 1.3em; transform: rotateY(0deg); opacity: 0.9; }
+  100% { height: 1.7em; transform: rotateY(30deg); }
+}
+
+@keyframes burnInner {
+  0% { height: 0.9em; transform: rotateX(0deg); }
+  50% { height: 0.8em; transform: rotateX(30deg); }
+  100% { height: 0.9em; transform: rotateX(0deg); }
+}
+
+@keyframes puff {
+  100% { transform: rotateY(-30deg); opacity: 0; }
+}
+
+@keyframes puff-bubble {
+  0% { opacity: 0; transform: scale(1, 1); }
+  50% { opacity: 1; transform: scale(1.2, 1.2); }
+  100% { opacity: 0; transform: scale(0.8, 0.8); }
+}
+
+.glow { animation: glow 3s ease-in-out infinite; }
+.burn { animation: burn 1.5s ease-in-out infinite; }
+.puff { animation: puff 0.3s ease-in-out forwards; }
+.puff-bubble { animation: puff-bubble 0.75s ease-in-out forwards; }
+
+.stripe {
+  position: absolute;
+  left: -0.25em;
+  width: 2em;
+  height: 0.25em;
+  background-color: #ff4b6f;
+  transform: rotate(25deg);
+  border-radius: 100%;
+  box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.stripe:nth-child(1) { top: 2.7em; opacity: 1.4; }
+.stripe:nth-child(2) { top: 4.2em; opacity: 0.9; }
+.stripe:nth-child(3) { top: 5.7em; opacity: 0.733; }
+.stripe:nth-child(4) { top: 7.2em; opacity: 0.65; }
+.stripe:nth-child(5) { top: 8.7em; opacity: 0.6; }
+
+.celebrate-text {
+  animation: zoomAndShake 0.8s ease-in-out 2;
+}
+
+@keyframes zoomAndShake {
+  0% { transform: scale(1) rotate(0); }
+  50% { transform: scale(1.2) rotate(-3deg); }
+  100% { transform: scale(1) rotate(3deg); }
+}
+
+/* Firework Effect */
+.firework {
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  animation: firework 1.5s ease-in-out forwards;
+}
+
+.firework::before {
+  content: "";
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: inherit;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  animation: firework-spread 1.5s ease-in-out forwards;
+}
+
+.firework::after {
+  content: "";
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: inherit;
+  border-radius: 50%;
+  transform: rotate(-45deg);
+  animation: firework-spread 1.5s ease-in-out forwards;
+}
+
+@keyframes firework {
+  0% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(2); }
+}
+
+@keyframes firework-spread {
+  0% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1.5) translate(1em, 1em); }
+  100% { opacity: 0; transform: scale(2) translate(2em, 2em); }
+}
+
+/* Sparkle Effect */
+.sparkle {
+  position: absolute;
+  width: 0.2em;
+  height: 0.2em;
+  background-color: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0% { opacity: 0; transform: scale(0); }
+  50% { opacity: 0.8; transform: scale(1.5); }
+  100% { opacity: 0; transform: scale(0); }
+}
+
+/* Star Effect */
+.star {
+  position: absolute;
+  width: 0.3em;
+  height: 0.3em;
+  background-color: #fff;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  opacity: 0;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+/* Meteor Effect */
+.meteor {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: meteor-fall linear infinite;
+}
+
+@keyframes meteor-fall {
+  0% {
+    transform: translate(0, 0) rotate(-45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100vw, 100vh);
+    opacity: 0;
+  }
+}
+
+/* Meteor positions */
+.meteor:nth-child(1) { top: 10%; left: 90%; animation-duration: 1.5s; animation-delay: 0.5s; }
+.meteor:nth-child(2) { top: 20%; left: 85%; animation-duration: 2s; animation-delay: 0.5s; }
+.meteor:nth-child(3) { top: 15%; left: 95%; animation-duration: 1.8s; animation-delay: 1s; }
+.meteor:nth-child(4) { top: 5%; left: 80%; animation-duration: 1.3s; animation-delay: 1.5s; }
+.meteor:nth-child(5) { top: 25%; left: 88%; animation-duration: 2.2s; animation-delay: 2s; }
+
+/* Cake SVG */
+#cake {
+  position: absolute;
+  bottom: 20%;
+  left: calc(50% - 145px); 
+  z-index: 2; 
+  transform: scale(1); 
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  #cake {
+    transform: scale(0.3);
+    left: calc(50% - 87px); 
+    bottom: -10%;
+  }
+
+  #candle {
+    bottom: 40%; /* Adjust candle position for mobile */
+  }
+
+  h1 {
+    font-size: 1.5em; 
+    bottom: 10%;
+  }
+
+  /* Firework Effect */
+  .firework {
+    width: 0.3em; 
+  }
+
+  .firework::before,
+  .firework::after {
+    width: 0.3em;
+    height: 0.3em;
+  }
+
+  @keyframes firework {
+    0% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(0.8); } 
+    100% { opacity: 0; transform: scale(1.5); }
+  }
+
+  @keyframes firework-spread {
+    0% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1.2) translate(0.8em, 0.8em); } 
+    100% { opacity: 0; transform: scale(1.5) translate(1.5em, 1.5em); }
+  }
+
+  /* Sparkle Effect */
+  .sparkle {
+    width: 0.15em; 
+    height: 0.15em;
+  }
+
+  @keyframes sparkle {
+    0% { opacity: 0; transform: scale(0); }
+    50% { opacity: 0.8; transform: scale(1.2); } 
+    100% { opacity: 0; transform: scale(0); }
+  }
+
+  /* Star Effect */
+  .star {
+    width: 0.2em; 
+    height: 0.2em;
+  }
+
+  @keyframes twinkle {
+    0% { opacity: 0; }
+    50% { opacity: 0.6; } 
+    100% { opacity: 0; }
+  }
+
+  /* Meteor Effect */
+  .meteor {
+    width: 1.5px; 
+    height: 1.5px;
+    box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.8); 
+  }
+
+  @keyframes meteor-fall {
+    0% {
+      transform: translate(0, 0) rotate(-45deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-100vw, 50vh); 
+      opacity: 0;
+    }
+  }
+
+  .meteor:nth-child(1) { top: 5%; left: 85%; animation-duration: 1.2s; animation-delay: 0.4s; }
+  .meteor:nth-child(2) { top: 15%; left: 80%; animation-duration: 1.5s; animation-delay: 0.6s; }
+  .meteor:nth-child(3) { top: 10%; left: 90%; animation-duration: 1.3s; animation-delay: 0.8s; }
+  .meteor:nth-child(4) { top: 3%; left: 75%; animation-duration: 1s; animation-delay: 1s; }
+  .meteor:nth-child(5) { top: 20%; left: 82%; animation-duration: 1.7s; animation-delay: 1.2s; }
+}
