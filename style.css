@@ -499,9 +499,19 @@ h1 {
   letter-spacing: 1px;
   position: relative;
   z-index: 1;
+   background: linear-gradient(90deg, #ff4b6f, #ffe566, #6be7ff, #ff4b6f);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  filter: drop-shadow(0 0 8px #ffe566);
+  animation: wish-pop 1s cubic-bezier(.4,2,.6,1), gradient-move 3s linear infinite;
 }
 
-
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
 @keyframes wish-pop {
   0% {
     opacity: 0;
@@ -586,3 +596,4 @@ h1 {
     border-right: none;
   }
 }
+

@@ -58,10 +58,15 @@ $(document).ready(function () {
       $("#letter-modal").addClass("open");
     }, 800);
 
-    // Đóng modal khi bấm dấu X và hiển thị lại modal sau 1 giây
-    $("#close-modal").off("click").on("click", function () {
-      $("#letter-modal").removeClass("open");
-    });
+      $("#close-modal").off("click").on("click", function () {
+        $("#letter-modal").removeClass("open");
+        $("#reopen-modal").fadeIn();
+      });
+
+      $("#reopen-modal").off("click").on("click", function () {
+        $("#letter-modal").addClass("open");
+        $(this).fadeOut();
+      });
 
     (function frame() {
       confetti({
