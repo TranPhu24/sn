@@ -418,3 +418,171 @@ h1 {
   .meteor:nth-child(4) { top: 3%; left: 75%; animation-duration: 1s; animation-delay: 1s; }
   .meteor:nth-child(5) { top: 20%; left: 82%; animation-duration: 1.7s; animation-delay: 1.2s; }
 }
+
+/* Modal Letter */
+.modal {
+  visibility: hidden;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 25, 52, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.modal.open {
+  visibility: visible;
+}
+.modal.open .modal-left,
+.modal.open .modal-right {
+  transform: scaleX(1);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  background: none;
+  box-shadow: none;
+  border: none;
+  position: relative;
+  gap: 0;
+  max-width: 90%;
+}
+
+.modal-left, .modal-right {
+  background: #fffbe9;
+  width: 260px;
+  height: 370px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 1.2em 1em;
+  transform: scaleX(0);
+  transition: transform 0.6s cubic-bezier(.4,2,.6,1);
+  will-change: transform;
+}
+
+.modal-left {
+  border-radius: 16px 0 0 16px;
+  border-right: 2px solid #f5e6c8;
+  align-items: center;
+  justify-content: center;
+  transform-origin: left;
+}
+
+.modal-left img {
+  max-width: 100%;
+  max-height: 80%;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.modal-right h2 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  color: #ff4b6f;
+  font-family: "Sacramento", cursive;
+  font-size: 2em;
+  text-align: center;
+  width: 100%;
+  animation: wish-pop 1s cubic-bezier(.4,2,.6,1);
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+
+
+@keyframes wish-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.7);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(8px) scale(1.08);
+  }
+  80% {
+    transform: translateY(0) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-right {
+  border-radius: 0 16px 16px 0;
+   flex-direction: column;
+  align-items: center; 
+  justify-content: flex-start; 
+  position: relative;
+  padding-top: 1.2em;
+}
+
+.modal-right h2 {
+  margin-top: 1.3em;
+  color: #ff4b6f;
+  font-family: "Sacramento", cursive;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.modal-right p {
+  font-size: 1em;
+  color: #333;
+  line-height: 1.6;
+   margin-top: 0.3em;   /* Giảm khoảng cách trên */
+  margin-bottom: 0.3em;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.5em;
+  right: 1em;
+  font-size: 2em;
+  color: #ff4b6f;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10;
+  background: none;
+  border: none;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #e60039;
+}
+
+/* Responsive for modal */
+@media (max-width: 700px) {
+  .modal-content {
+    flex-direction: column;
+    align-items: center;
+    max-width: 95%;
+  }
+  .modal-left, .modal-right {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    min-width: 0;
+    border-radius: 16px 16px 0 0;
+    border-right: none;
+    border-bottom: 2px solid #f5e6c8;
+    padding: 1em;
+  }
+  .modal-right {
+    border-radius: 0 0 16px 16px;
+    border-bottom: none;
+    border-right: none;
+  }
+}
